@@ -1,0 +1,316 @@
+:root {
+  --lgreen: #CBDFDF;
+  --medblue: #96B2BF;
+  --medgreen: #619E89;
+  --dgreen: #406969;
+  --red: #9E6162;
+  --light: #F3F6F8;
+  --yellow: #fffad2;
+}
+
+
+body {
+	background-color: var(--lgreen);
+ 	width: 100%;
+	padding: 0px;
+	margin: 0px;
+	font-family: 'Roboto', sans-serif;
+}
+
+.center {
+    margin: auto;
+}
+
+h1, h2, h3, h4, h5 {
+	font-family: 'Caveat Brush', cursive;
+	color: var(--medgreen);
+}
+
+
+.content {
+	width: 1024px;
+	margin: auto;
+	background-color: var(--light);
+	padding: 30px;
+	padding-top: 110px;
+	padding-bottom: 60px;
+}
+
+.bannerImage {
+	width: 800px;
+	margin: auto;
+ 	padding: 20px;
+}
+
+.bannerImage img{
+	width: 800px;
+	height: 300px;
+}
+
+#accountInfo a {
+	text-decoration: none;
+	color: var(--medgreen);
+}
+
+#accountInfo a:hover {
+ 	color: var(--lgreen);
+}
+
+/********* TABLES ***********/
+
+#fishTable, #cartTable {
+	width: 100%;
+ }
+
+ 
+
+/********* ALBUM ***********/
+
+#album {
+	width: 800px;
+	height: 300px;
+	margin: auto;
+	position: relative;
+}
+
+#albumImageDiv {  
+  	position: absolute;
+ 	z-index: 5;
+ 	width: 800px;
+	height: 300px;
+ 	background: url('../img/slideshow_img/image0.png') center center no-repeat;
+ 	background-size: contain;
+  	top: 0px;
+ 	left: 0px;
+ 	transition: all .5s ease-in-out;
+}
+
+#albumInfo {  
+  	position: absolute;
+ 	z-index: 10;
+ 	background-color:rgba(0, 0, 0, 0.5);
+ 	top: 0px;
+ 	left: 0px;
+ 	width: 150px;
+ 	height: 260px;
+ 	color: var(--light);
+ 	font-style: italic;
+ 	padding: 20px;
+}
+
+#albumPlay {  
+  	position: absolute;
+ 	z-index: 10;
+ 	background-color:rgba(0, 0, 0, 0.5);
+ 	top: 0px;
+ 	left: 770px;
+ 	width: 30px;
+ 	height: 30px;
+ 	line-height: 30px;
+ 	text-align: center;
+ 	color: var(--light);
+  }
+
+#albumDots {  
+	width: 150px;
+	margin: auto;
+ 	height: 15px;
+	display: block;
+ 	text-align: center;
+}
+
+.dot {
+	width: 11px;
+	height: 11px;
+	margin: 0px 5px;
+ 	border-radius: 100%;
+	display: inline-block;
+	background-color: rgba(0, 0, 0, 0.6);
+}
+
+.dotHighlight {
+	background-color: var(--medgreen);
+}
+
+
+
+
+/********* GRID CLASSES *********/
+
+.threeCol {
+  display: grid;
+  grid-template-columns: 260px 260px 260px;
+  grid-gap: 10px;
+  width: 800px;
+  margin: auto;
+  position: relative;
+}
+
+.threeColImage {  
+   	width: 260px;
+  	height: 150px; 
+}
+
+.threeColImageInfo {  
+  	background-color: var(--dgreen);
+   	width: 260px;
+  	height: 50px;
+  	line-height: 50px;
+  	text-align: center;
+ 	color: var(--light);
+ 	font-style: italic;
+ }
+
+.threeColImageInfo:hover {
+  background-color: var(--medgreen);
+}
+
+
+
+.twoCol500300 {
+  display: grid;
+  grid-template-columns: 490px 290px;
+  grid-gap: 20px;
+  width: 800px;
+  margin: auto;
+}
+
+
+#siteinfo {
+ 	width: 490px;
+  	display: table-cell;
+}
+
+
+
+/********* HEADER **********/
+
+header {
+ 	background-color: var(--medblue);
+ 	width: 100%;
+ 	height: 80px;
+ 	box-shadow: 0px 1px 13px var(--medblue);
+ 	position: fixed;
+ 	top: 0px;
+ 	z-index: 99;
+} 
+
+#brand {
+	font-family: 'Caveat Brush', cursive;
+	color: var(--dgreen);
+	font-size: 60px;
+	line-height: 80px;
+	padding-left: 20px;
+}
+
+
+
+/********* FOOTER **********/
+
+footer {
+ 	background-color: var(--medblue);
+ 	width: 100%;
+ 	height: 50px;
+ 	text-align: center;
+ 	color: var(--light);
+	font-size: 15px;
+	line-height: 50px;
+}
+
+
+
+/********* Coming Soon Page **********/
+
+.clock {
+ 	background-color: var(--lgreen);
+ 	padding: 10px;
+  	text-align: center;
+ 	color: var(--dgreen);
+	font-size: 80px;
+	line-height: 160px;
+}
+
+#countdown {
+	height: 160px;
+	line-height: 160px;
+	width: 100%;
+	text-align:center;
+}
+
+.fourCol {
+  display: grid;
+  grid-template-columns: 200px 200px 200px 200px;
+  grid-gap: 0px;
+  width: 800px;
+  margin: auto;
+  position: relative;
+}
+
+.clocklabel {
+	width: 180px;
+	text-align:center;
+	padding: 10px;
+	background-color: var(--lgreen);
+	color: var(--dgreen);
+	font-size: 18px;
+	line-height: 18px;
+}
+
+
+
+/********* News Feed **********/
+
+
+#newsdiv {
+	background-color: var(--yellow);
+	width: 270px;
+	margin:auto;
+	padding: 10px;
+	display: table-cell;
+	height: 100%;
+}
+
+.news-date {
+	font-size: smaller;
+	font-style: italic;
+ 	color: grey;
+ }
+.news-title {
+	font-size: larger;
+	color: var(--red);
+	text-decoration: none;
+}
+.news-img {
+	max-width: 200px;
+	max-height: 80px;
+}
+
+
+/*********** Forms *************/
+
+fieldset {
+	padding: 30px;
+}
+ 
+
+form label {
+    width: 120px;
+    display: inline-block;
+    vertical-align: top;
+    text-align: right;
+    padding: 3px 7px;
+    color: var(--dgreen);
+}
+ 
+input, select {
+    padding: 5px;
+    color: var(--dgreen);
+    background: white;
+ 	width: 400px;
+	text-transform: none;
+}
+input:focus {
+    background-color: var(--yellow);
+}
+
+

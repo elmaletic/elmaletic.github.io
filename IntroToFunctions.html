@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+     <meta charset="utf-8">
+     <title>Intro to Functions: Jan 23</title>
+     <meta name="author" content="Elma Letic">
+
+
+  </head>
+  <body>
+
+  	<h1 id="PageTitle"></h1>
+	<span id="testSpan"></span>
+	<div id="theDiv"></div>
+    
+	<!-- JavaScript -->
+    <script>
+	//How to get information from the code to the user
+	//Print to console, but this is not good practice for final work
+	var a = 15;
+	var b = "hello";
+	var c = 5;
+	var d = [1,2,3];
+	
+	console.log(a, 'a');
+	console.log(a + c);
+	console.log(a+c+b);
+	
+	var newvariable = a+c+b;
+	console.log(typeof newvarible);
+	console.log(typeof a);
+	
+	console.log(b+a+c);
+	
+	//2. Browser alerts
+	//alert('This is a pop up');
+	//alert('This will come up after the first is closed');
+	
+	//3. append to DOM elements
+	//this will add text, but it also clears the element first:
+	document.getElementById('PageTitle').innerHTML = "My Page Title";
+	
+	//can also create a variable for the element:
+	var mySpan = document.getElementById('testSpan');
+	mySpan.innerHTML = "Here's something in the span";
+	
+	//can also add new text or other elements without erasing
+	var myDiv = document.getElementById('theDiv');
+	//still replaces old content and can get tedious to type, not best practice
+	//var badExample = "<p>First paragraph </p><p>Second paragraph</p>";
+	//myDiv.innerHTML = badExample;
+	
+	var firstP = document.createElement('p');
+	var firstPtext = document.createTextNode('First Paragraph');
+	firstP.appendChild(firstPtext);
+	myDiv.appendChild(firstP);
+	
+	var secondP = document.createElement('p');
+	var secondPtext = document.createTextNode('Second Paragraph');
+	secondP.appendChild(secondPtext);
+	myDiv.appendChild(secondP);
+	
+	
+	
+	//Intro to Functions
+	function aFirstFunction() {
+		console.log('This function was called')
+	}
+	
+	//call the function by naming it:
+	aFirstFunction();
+	
+	function sum(number1, number2){
+		console.log(number1+number2)
+	}
+	
+	sum(7,10);
+	sum (a,3);
+	sum('hello ', 'world');
+	
+	//Create an input field on the page:
+	var newInput = document.createElement('input');
+		newInput.setAttribute('type', 'text');
+		newInput.setAttribute('id', 'colorInput');
+		newInput.setAttribute('placeholder','#XXXXXX');
+		newInput.setAttribute('maxlength', "7");
+		myDiv.appendChild(newInput);
+		
+	var newButton = document.createElement('button');
+	var ButtonText = document.createTextNode('Click here');
+		newButton.appendChild(ButtonText);
+		myDiv.appendChild(newButton);
+		
+	//this function will be called by the button we created above 
+	
+	function setBackground(){
+		//use let, so this variable is only availible in the function
+		let inputField = document.getElementById('colorInput');
+		let inputText = inputField.value;
+		console.log(inputText);
+		
+		document.body.style.background = inputText;
+	}
+	
+	//attach function call to button
+	newButton.addEventListener("click", setBackground, false);
+		
+	//preview possible style properties to change
+	console.log(document.body.style);
+	
+	
+    </script>
+    
+   </body>
+</html>

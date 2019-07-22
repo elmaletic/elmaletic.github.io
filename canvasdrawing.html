@@ -1,0 +1,56 @@
+
+<!DOCTYPE HTML>
+<html>
+	
+<head>
+	<meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+  
+    <title>Canvas Drawing</title>
+
+ 	<link rel="stylesheet" href="includes/canvas.css">
+
+ 	
+</head>
+
+<body>
+
+  <div id='menu'>
+	  <h1>Drawing Pad</h1>
+	  	<form id='optform'>
+		  	<fieldset>
+	        	<legend>Line Width</legend>
+	            <input type="range" min="1" max="80" value="5" class="slider" id="lineWidth">
+	            <input class="switchinput" type="radio" id="markerswitch" name="texture"  checked/>
+				<label class="switchlabel" for="markerswitch" onclick = "toggleTexture(false)">Marker</label>
+				<input class="switchinput" type="radio" id="sprayswitch" name="texture" />
+				<label class="switchlabel" for="sprayswitch" onclick = "toggleTexture(true)">Spraypaint</label>
+				
+				<input class="switchinput" type="radio" id="nofillswitch" name="fillopt" checked />
+				<label class="switchlabel" for="nofillswitch" onclick = "toggleFill(false)">No Fill</label>
+				<input class="switchinput" type="radio" id="fillswitch" name="fillopt" />
+				<label class="switchlabel" for="fillswitch" onclick = "toggleFill(true)">Fill</label>
+ 	    	</fieldset>
+	    	<fieldset>
+	        	<legend>Color</legend>
+	            <div id='palette'> </div>
+	            <div id='rainbow'></div>
+	    	</fieldset>
+ 
+	    	<fieldset>
+	        	<legend>Save/Erase</legend>
+	            <button id="eraser">Erase Canvas</button><br>
+				<button><a id="download">Download as image</a></button>
+	    	</fieldset>
+	  	</form>
+
+  </div>
+  
+
+  <canvas id="canvas"  ></canvas>
+
+  <script src="includes/drawing.js"></script>
+</body>
+
+</html>

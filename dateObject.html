@@ -1,0 +1,178 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <title>Date Object Practice</title>
+ </head>
+
+<body > 
+	<h1>The Date Object</h1>
+	
+	<div id="div1"></div>
+	
+	<button id ="start">Start Timer</button>
+	<button id ="stop">Stop Timer</button>
+
+   	<script>
+	
+	/*
+		The Date Object:
+		native JS object, but we can only call it
+		using the "new" constructor.
+		we usually avoid this for arrays, for instance:
+		var a = new Array();
+		but this is better:
+		var a = [];
+	*/
+	
+	var aNewDate = new Date();
+	
+	console.log(aNewDate);
+	console.log(aNewDate.getDate()); //returns the date
+	console.log(aNewDate.getDay()); //weekday, 0 = sun 6 = sat
+	
+	//to display the weekday as a string, we need an array:
+	var weekdays = ['Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday']
+	
+	var today = aNewDate.getDay(); //number 0-6
+	document.getElementById('div1').innerHTML = 'Today is ' + weekdays[today];
+	
+	console.log(aNewDate.getMonth()); //number 0-11 starting at 0
+	console.log(aNewDate.getFullYear()); //4 digit year 
+	console.log(aNewDate.getHours()); //24 hour based time 
+	
+	//make a new date object:
+	
+	var graduation = new Date('May 13, 18 14:00:00 GMT-05:00');
+	console.log(graduation);
+	
+	//get the current time, in a nearly useless way:
+	
+	var currentTime = aNewDate.getTime();
+	console.log(currentTime); //returns number of milliseconds since Jan 1, 1970, midnight UTC
+	//to display the current time, just use the .getHours and getMinutes methods, not getTime
+	//getTime is great for timing events. If we want to know how much time has elapsed b/t
+	//events, we could compare the values of two date objects .getTime results
+	
+	//if we use getTime() repeatedly using the same date object, it won't change except when the page
+		//is loaded
+		
+	//add event listeners to the buttons
+	var startButton = document.getElementById('start');
+	var stopButton = document.getElementById('stop');
+	
+	startButton.addEventListener('click', startTimer, false);
+	stopButton.addEventListener('click', stopTimer, false);
+	
+	//we want these variables in all functions:
+	var startTime, stopTime; //don't need values, and they can't be redefined (i.e using var or let)
+	
+	function startTimer() {
+		//this function will get the time at which the start button is clicked
+		//the getTime() method does not update, so we need a new date object
+		let startTimerDateObject = new Date();
+		startTime = startTimerDateObject.getTime();
+		console.log(startTime);
+	}
+	
+	function stopTimer() {
+		let stopTimerDateObject = new Date();
+		let stopTime = stopTimerDateObject.getTime();
+		console.log(stopTime);
+		
+		//difference from start to end:
+		var difference = stopTime - startTime;
+		console.log(difference);
+		
+		//convert the time difference value to a useful format
+		//'difference' is a number that is a total of milliseconds
+		//we need to use math to find the number of minutes, secs, 
+		//etc. it represents
+		
+		milliToTime(difference);
+	}
+	
+	function milliToTime(milliseconds) {
+		//milliseconds is the function parameter
+		//expects a number in milliseconds 
+		
+		//get number of whole seconds:
+		var seconds = Math.floor(milliseconds/1000); //returns whole seconds at the largest 
+		//integer before it. (i.e. .5 returns 0, 1 returns 1, 1.9 returns 1, etc)
+		
+		var leftOverMS = milliseconds - (seconds*1000);
+		
+		//get number of whole minutes:
+		//only need if seconds is over 60
+		var minutes = 0;
+		if (seconds >=60){
+			minutes = Math.floor(seconds/60);
+			seconds = seconds - (minutes*60);
+		}
+		
+		var hours = 0;
+		if (minutes >= 60){
+			hours = Math.floor(minutes/60);
+			minutes = minutes - (hours*60);
+		}
+		
+		var days = 0;
+		if (hours >=24){
+			days = Math.floor(hours/24);
+			hours = hours - (days*24);
+		}
+		
+		//HOMEWORK: 
+		/*
+		finish this function, or one like it:
+		should accept a single parameter for milliseconds
+		returns (print it or console log):
+			full number of seconds in interval (done)
+			full number of minutes in interval (done)
+			full number of hours in interval (not done - but similar to minutes)
+			full number of days in interval (not done)			
+		*/
+		
+		
+		console.log( 'Number of milliseconds:'+milliseconds );
+		console.log( 'Number of full seconds:'+seconds );
+		console.log( 'Number of full minutes:'+minutes );
+		console.log( 'Number of full hours:'+hours );
+		console.log( 'Number of full days:'+days );
+		console.log( 'Number of leftover milliseconds:'+leftOverMS );
+	}
+	
+	
+	//BE CAREFUL WITH THESE:
+	
+	/* two timer methods
+		.setTimeout(function, time)
+		waits for elapsed time  (in milliseconds) before calling function specified
+		.setInterval (function, time)
+		waits for elapsed time before calling the function, then calls the function
+		repeatedly waiting for that period of time between calls. (i.e. 3000 (3 secs)
+		it waits 3 secs to call first time, then 3 secs again, etc.)
+	*/
+	
+	var at = setTimeout(function() { alert('give me a minute')}, 2000);
+	var seconds = 0;
+	
+	var it = setInterval( function() { 
+			seconds++;
+			console.log(seconds + " seconds have elapsed")
+		}, 1000 );
+	
+	//how to stop a timer:
+	//setInterval timer must be given a variable name 
+	
+	function clearTimer() {
+		clearInterval(it);
+	}
+	
+	setTimeout(clearTimer, 10000);
+	
+	
+	
+   	</script>
+</body>
+</html>

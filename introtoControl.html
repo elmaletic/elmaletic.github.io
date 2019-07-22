@@ -1,0 +1,193 @@
+
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+     <meta charset="utf-8">
+     <title>Intro to Functions: Jan 23</title>
+     <meta name="author" content="LW">
+
+
+  </head>
+  <body>
+
+  	<h1 id="pageTitle">a</h1>
+  	
+  	<span id="testSpan"></span>
+  	
+  	<div id="theDiv"></div>
+    
+    <script>
+		// How to get information from the code to the user
+		
+		// 1. Print to console, but this is not good practice for final work
+		
+			var a = 15;
+			var b = "hello";
+			var c = 5;
+			var d = [1,2,3];
+		
+			console.log( a, 'a' );
+			console.log( a+c );
+			console.log(a+c+b);
+			
+			var newvariable = a+c+b;
+			console.log( typeof newvariable )
+			console.log( typeof a )
+			
+			console.log( b+a+c )
+			
+		// 2. Browser alerts
+		
+			// alert( 'This is a pop up' );
+			// alert( 'This will come up after the first is closed' );
+			
+		// 3. Append to DOM elements
+		
+			// This will add text, but it also clears the element first:
+			document.getElementById('pageTitle').innerHTML = "My Page Title";
+			//document.getElementById('pageTitle').innerHTML = "My Page Title II";
+			
+			// Can also define a variable for the element:
+			var mySpan = document.getElementById('testSpan');
+			mySpan.innerHTML = "Here's something in the span";
+			
+			// the .innerHTML method works, but replaces all content. 
+			// We can also add new text or other elements without erasing.
+			
+			var myDiv = document.getElementById('theDiv');
+			
+			// This will still replace old content, and can get tedious to type
+			// var badExample = "<p>First paragraph</p><p>Second paragraph</p>";
+			// myDiv.innerHTML = badExample;
+			
+			var firstP = document.createElement('p');
+			var firstPText = document.createTextNode('First paragraph');
+			firstP.appendChild( firstPText )
+			myDiv.appendChild( firstP )
+			
+			var secondP = document.createElement('p');
+			var secondPText = document.createTextNode('Second paragraph');
+			secondP.appendChild(secondPText);
+			myDiv.appendChild( secondP );
+			
+		
+		
+		// Intro to Functions:
+		
+		function aFirstFunction() {
+			console.log("this function was called");
+		}
+		
+		// call the function by naming it:
+		
+		aFirstFunction();
+		
+		function sum( number1, number2 ) {
+			console.log( number1+number2 )
+		}
+		
+		sum( 7, 10 );
+		sum( a, 3 );
+		sum( 'hello', ' world')
+		
+		
+		// Create an input field on the page:
+		
+		var newInput = document.createElement('input');
+			newInput.setAttribute("type","text");
+			newInput.setAttribute("id", "colorInput");
+			newInput.setAttribute("placeholder","#XXXXXX");
+			newInput.setAttribute("maxLength","7")
+			myDiv.appendChild(newInput);
+			
+		var newButton = document.createElement('button');
+		var buttonText = document.createTextNode('Click here');
+			newButton.appendChild(buttonText);
+			myDiv.appendChild( newButton );
+			
+		// this function will be called by the button we created above
+		
+		var hexdigits = ['0', '1', '2', '3', '4', '5', '6', '7', '8', '9', 'A', 'B', 'C', 'D', 'E', 'F'];
+		
+		
+		
+		function setBackground() {
+			// Use let, so this variable is only available in the function
+			let inputField = document.getElementById('colorInput');
+			let inputText = inputField.value;
+			inputText = inputText.toUpperCase();
+			console.log(inputText);
+			
+			//include some tests to make sure the input is in expected format
+			//want a hexadecimal string in the format #XXXXXX where each x is a
+			//hexadecimal value: 0,1,2,3,4,5,6,7,8,9,a,b,c,d,e,f 
+			
+			//when testing, set up a boolean value
+			
+			var correct = true; //assume string is in correct format 
+			
+			//test for length, should be 7
+			
+			if ( inputText.length != 7) {
+				//check to see if string is not equal to 7
+				//in that case, set correct to false
+				correct = false;
+				console.log("string should have 7 characters!");
+			}
+			
+			// test that the first character in the string is the # symbol
+			
+			if ( inputText[0] != '#'){
+				correct = false;
+				console.log("string must start with #");
+			}
+			
+			//loop over all 6 characters 
+			
+			for (let i=1; i < 7; i++){
+				if (hexdigits.indexOf(inputText[i]) == -1){
+					//looking for index of the i character in string in hexdigits
+					//if not found, index returns -1
+					correct = false;
+					console.log("string can only contain hex values - your "+i+"th digit is not hex");
+				}
+			}
+			
+			console.log(correct);
+			
+			if (correct){
+				document.body.style.background = inputText;
+			}
+			
+			document.body.style.background = inputText;
+			
+		}
+		
+		// attach function call to button:
+		
+		newButton.addEventListener( "click", setBackground, false );
+		
+		// preview possible style properties to change:
+		
+		console.log( document.body.style );
+			
+	// looping over arrays
+		var myArray = [0, 'hi', 3, 'q', 14, 'yikes'];
+		
+		//if  the array is changing or length is unknown:
+		var arrayLength = myArray.length;
+		for (var i = 0; i < arrayLength; i++){
+		console.log(myArray[i]);
+		}
+		
+		//better to use forEach for looping over arrays
+		myArray.forEach(function (item, i){
+			if (typeof item == 'string'){
+			console.log(item.toUpperCase, i);
+			}
+		})
+		
+    </script>
+    
+   </body>
+</html>

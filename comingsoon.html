@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <title>Saltwater Fish Store - Coming Soon!</title>
+    <link rel="stylesheet" href="includes/fishstore.css">
+    <link href="https://fonts.googleapis.com/css?family=Caveat+Brush|Roboto:400,400i,700,700i" rel="stylesheet">
+</head>
+
+<body > 
+	<header>
+    	<div id="brand">Fish.JS</div>
+   	</header>
+  	<div class="content">
+  			<h1>Welcome to Fish.JS</h1>
+ 				Our store will open in  
+ 			<div id="countdown" class="center">
+				<span class="clock" id="days1">0</span><span class="clock" id="days2">0</span> Days 
+				<span class="clock" id="hours1">0</span><span class="clock" id="hours2">0</span> Hours 
+				<span class="clock" id="min1">0</span><span class="clock" id="min2">0</span> Minutes 
+				<span class="clock" id="sec1">0</span><span class="clock" id="sec2">0</span> Seconds 
+			</div> 
+			
+			<div id = "canvasdiv"></div>
+			
+  	</div>
+  	
+  	<footer>
+ 			<div>This is a not a real website... maybe you want this: <a href="../mis370/index.php">MIS 370 Course Home</a>?</div>
+   	</footer>
+   	
+   	<script src="includes/library.js"></script>
+   	<script> 
+	//define the time we're counting down to 
+	var openingDay = new Date('May 10, 18 08:00:00 GMT -05:00');
+	/*
+	var currentTime = new Date(); //the time the user opens the page
+	
+	var openingDayMSSince1970 = openingDay.getTime(); //time between 1970 & may 10 8am
+	var currentTimeMSSince1970 = currentTime.getTime(); //time between 1970 & right now
+	
+	var differenceInMS = openingDayMSSince1970 - currentTimeMSSince1970;
+	var myTimeObject = msecToObject(differenceInMS);
+	console.log(myTimeObject);
+	
+
+	
+	setInner('days1', myTimeObject.day[0]);
+	setInner('days2', myTimeObject.day[1]);
+	setInner('hours1', myTimeObject.hr[0]);
+	setInner('hours2', myTimeObject.hr[1]);
+	setInner('min1', myTimeObject.min[0]);
+	setInner('min2', myTimeObject.min[1]);
+	setInner('sec1', myTimeObject.sec[0]);
+	setInner('sec2', myTimeObject.sec[1]);
+	//this is equivlanet to document.getElementById('hours1').innerHTML = myTimeObject[0];
+	
+	//we want this displayed countdown to update, each second
+	/*
+		1. constantly update the current time 
+		2. update every second
+		3. we'll use a js timer - since we need it to happen more than once,
+		we'll use setInterval() timer
+	*/
+	
+	function updateCountdown() {
+		//get current time
+		var currentTime = new Date(); 	
+		var differenceInMS = openingDay.getTime() - currentTime.getTime();
+		var myTimeObject = msecToObject(differenceInMS);
+		setInner('days1', myTimeObject.day[0]);
+		setInner('days2', myTimeObject.day[1]);
+		setInner('hours1', myTimeObject.hr[0]);
+		setInner('hours2', myTimeObject.hr[1]);
+		setInner('min1', myTimeObject.min[0]);
+		setInner('min2', myTimeObject.min[1]);
+		setInner('sec1', myTimeObject.sec[0]);
+		setInner('sec2', myTimeObject.sec[1]);
+	}
+	
+	updateCountdown();
+	var updateTimer = setInterval(updateCountdown, 1000); 
+	/*
+		to call a function repeatedly, use setInterval:
+		format: setInterval(function() { }, timeDelay)
+		or use another function:
+			setInterval(functionName, timeDelay) //no () after function name
+		
+		to pass a parameter:
+		setInterval (function() {functionName(parameter)}, timeDelay)
+	*/
+	
+	//create a canvas and start drawing
+	var canvas = document.createElement('canvas');
+	var canvasDiv = document.getElementById('canvasdiv');
+	canvasDiv.appendChild(canvas);
+	
+	//every canvas needs a context, this is what we modify
+	
+	var context = canvas.getContext('2d');
+	console.log(context);
+	
+	context.fillStyle = 'yellow';
+	context.fillRect(0,0,30,40);
+	context.fillStyle = 'red';
+	context.fillRect(60,20,60,40);
+	
+
+	
+	</script>
+</body>
+</html>

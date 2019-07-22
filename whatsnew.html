@@ -1,0 +1,84 @@
+
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <title>Saltwater Fish In Stock</title>
+    <link rel="stylesheet" href="includes/fishstore.css">
+    <link href="https://fonts.googleapis.com/css?family=Caveat+Brush|Roboto:400,400i,700,700i" rel="stylesheet">
+</head>
+
+<body > 
+	<header>
+    	<div id="brand">Fish.JS</div>
+   	</header>
+  	<div class="content">
+	  	
+	  	<div class="bannerImage"><img id="bigPic" src="img/emperorangel.png"></div>
+  
+		<h1>What's in stock today?</h1>
+		
+		<div class="threeCol">
+			
+			<fieldset>
+			 	<legend>Care Level</legend>
+			 	<div>
+			    	<input type="checkbox" name="care" value="Easy" onchange="update()" checked>
+			    	<label for="Easy">Easy</label>
+			  	</div>
+			 	<div>
+			    	<input type="checkbox" name="care" value="Moderate" onchange="update()" checked>
+			    	<label for="Moderate">Moderate</label>
+			  	</div>
+			  	<div>
+			    	<input type="checkbox" name="care" value="Difficult" onchange="update()" checked>
+			    	<label for="Difficult">Difficult</label>
+			  	</div>
+			</fieldset>
+			<fieldset>
+		 		<legend>Maximum Size</legend>
+		 		<div>
+			    	<input type="number" value=200 id="usersize" oninput="update()"> inches
+ 			  	</div>
+			 </fieldset>
+			 <fieldset>
+		 		<legend>Maximum Cost</legend>
+		 		<div>
+			    	$ <input type="number" value=200 id="userprice" oninput="update()">
+ 			  	</div>
+			 </fieldset>
+		</div>		
+			<br>	
+		<table id="fishTable">
+ 		    <thead>
+		      <th scope="col">Common Name</th>
+		      <th scope="col">Species</th>
+		      <th scope="col">Max. Size (in)</th>
+		      <th scope="col">Colors</th>
+		      <th scope="col">Difficulty</th>
+		      <th scope="col">Price</th>
+		    </thead>
+		</table>
+
+ 	<!-- from Jan 30
+	<script src="includes/introToObjects.js">
+		// console.log('hi there') // this won't show up
+	</script>	
+	<script>
+		console.log("and this is from the page")
+	</script>
+	  -->
+	  <script src="includes/whatsnew.js">
+	  </script>
+ 
+
+  	</div>
+  	
+	<footer>
+		<div>This is a not a real website... maybe you want this: <a href="../mis370/index.php">MIS 370 Course Home</a>?</div>
+	</footer>
+   	
+   	
+</body>
+</html>
